@@ -34,11 +34,17 @@ class HistogramGenerators():
 
 
     def generate_histogram(self, chart_params):
-        data, x, width, nbins = itemgetter('data', 'x', 'width', 'nbins')(chart_params)
+        data, x, y, width, nbins, showlegend, colorseperator = itemgetter('data', 'x', 'y', 'width', 'nbins', 'showlegend', 'colorseperator')(chart_params)
         histogram_fig = px.histogram(
             data, 
             x=x, 
-            nbins=nbins
+            y=y,
+            # nbins=nbins,
+            color=colorseperator,
         )
+        # histogram_fig.update_xaxes(type='Trades Above 1 SD Duration')
+        # histogram_fig.update_layout(showlegend=showlegend)
+        # histogram_fig.add_trace(go.Histogram(x=x2,bingroup=1))
+        # histogram_fig.update_layout(barmode="overlay", bargap=0.1)
         histogram_jpeg = convert_chart_figure_to_jpeg(histogram_fig, width)
         return histogram_jpeg
