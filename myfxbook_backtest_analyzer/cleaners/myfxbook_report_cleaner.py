@@ -20,14 +20,14 @@ class Myfxbook_Report_Cleaner():
 
 
     def open_report(self):
-        self.df = pd.read_csv(self.input_file)
+        self.df = pd.read_csv(self.input_file, engine='python')
         output_filename = self.input_file.replace('.csv', '-cleaned.xlsx') 
         slice_index = output_filename.rfind('/')
         self.output_filename = self.output_path + output_filename[slice_index:]
 
 
 
-    #* Drops all withdrawal and deposit orders to leave only trades
+    #* Drops all withdrawal and deposit orders to leave only tradesx
     def drop_withdrawls_deposits(self):
         self.df.drop(self.df[self.df['Action'] == 'Deposit'].index, inplace = True)
         self.df.drop(self.df[self.df['Action'] == 'Withdrawal'].index, inplace = True)
