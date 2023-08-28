@@ -60,16 +60,16 @@ class MyfxbookApp(tk.Frame):
         output_path_text.grid(row = 7, column = 1, pady=(5, 5))
 
 
-    #* Download Button
+    #* Run Button
     def init_run_button(self):
-        download_button = tk.Button(
+        run_button = tk.Button(
             root, 
             text='Run', 
             command=self.run_analyzer
         )
-        download_btn_font = font.Font(family='Helvetica', size=18, weight='bold')
-        download_button['font'] = download_btn_font
-        download_button.grid(row = 8, column = 1, pady=(30, 5))
+        run_btn_font = font.Font(family='Helvetica', size=18, weight='bold')
+        run_button['font'] = run_btn_font
+        run_button.grid(row = 8, column = 1, pady=(30, 5))
 
     
     def run_analyzer(self):

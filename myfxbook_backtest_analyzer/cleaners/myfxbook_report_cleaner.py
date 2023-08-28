@@ -20,7 +20,19 @@ class Myfxbook_Report_Cleaner():
 
 
     def open_report(self):
-        self.df = pd.read_csv(self.input_file, engine='python')
+        col_names = [
+            "Tags","Ticket","Open Date",'Close Date', 'Symbol','Action','Units/Lots', 'SL', 'TP', 'Open Price',	'Close Price', 'Commission', 'Swap', 'Pips', 'Profit', 'Gain', 'Comment', 'Magic Number', 'Duration (DD:HH:MM:SS)', 'Profitable(%)', 'Profitable(time duration)', 'Drawdown', 'Risk:Reward', 'Max(pips)', 'Max(USD)', 'Min(pips)', 'Min(USD)', 'Entry Accuracy(%)', 'Exit Accuracy(%)', 'ProfitMissed(pips)', 'ProfitMissed(USD)'
+        ]
+        self.df = pd.read_csv(self.input_file, engine='python', names=col_names,)
+        # self.df = pd.read_csv(self.input_file, engine='python', encoding='utf-8')
+        # self.df = pd.read_csv(self.input_file, sep=',', engine='c', encoding='utf-8')
+        # self.df = pd.read_csv(self.input_file, encoding='Latin-1', names=col_names, lineterminator='\n')
+        # self.df = pd.read_csv(self.input_file, engine='c')
+        # self.df = pd.read_csv(self.input_file, engine='python', encoding = "ISO-8859-1")
+        # self.df = pd.read_csv(self.input_file, engine='python', encoding = "latin")
+        # self.df = pd.read_csv(self.input_file, engine='c', encoding = "ISO-8859-1")
+        # with open(self.input_file, encoding='utf-16') as f:
+        #     self.df = pd.read_csv(f)
         output_filename = self.input_file.replace('.csv', '-cleaned.xlsx') 
         slice_index = output_filename.rfind('/')
         self.output_filename = self.output_path + output_filename[slice_index:]

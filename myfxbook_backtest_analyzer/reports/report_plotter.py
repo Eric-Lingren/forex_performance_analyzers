@@ -73,6 +73,7 @@ class Report_Plotter():
         self.df['Duration Delta'] = ''
         self.df['Duration Seconds'] = ''
         for i, row in self.df.iterrows():
+            print(i, ' ', row)
             try:
                 duration_value = row['Duration (DD:HH:MM:SS)']
                 index = duration_value.find(':')
@@ -84,6 +85,7 @@ class Report_Plotter():
                 self.df.at[i, 'Duration Delta'] = time_delta
                 self.df.at[i, 'Duration Seconds'] = time_delta.total_seconds()
             except:
+                print(i, row)
                 raise Exception("Did you forget to delete the open trades from the spreadsheet?")
 
         self.df['Duration Seconds'] = self.df['Duration Seconds'].astype(float)

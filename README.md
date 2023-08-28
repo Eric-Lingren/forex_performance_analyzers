@@ -1,4 +1,7 @@
 # forex_performance_analyzers
 
-Run main.py
+
+source venv/bin/activate
+python main.py
+
 This will give you the choice of what package you want to run
